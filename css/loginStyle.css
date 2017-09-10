@@ -1,0 +1,203 @@
+@charset "utf-8";
+/* CSS Document */
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+*{
+	margin:0px;	
+}
+
+body{
+	background-image:url(../img/blur.jpg);
+}
+
+.conteudo{
+	width:400px;
+	height:470px;
+	background-color:#FFF;
+	position:absolute;	
+	margin-top: calc(50% - 620px);
+	margin-left: calc(50% - 230px);
+	border-radius:2px;
+	box-shadow:0.5px 0.9px 4px;
+	padding:50px;
+}
+
+.imagem{
+	margin-top:10px;	
+	width:100px;	
+}
+
+.caixa{	
+	width:80%;
+	height:20px;
+	position:relative;
+	margin:auto;
+	margin-bottom:50px;	
+	border-bottom:1px solid #e0e0e0;
+	transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+.txt{
+	width:100%;
+	height:98%;
+	border:none;
+	background: transparent;
+	border-radius:1px;
+	outline:none;
+	transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+    
+	
+}
+
+label{
+	font-family:'Roboto', sans-serif;
+	font-size:14px;
+	position:absolute;	
+	color:#757575;
+	transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+h3{
+	font-family:'Roboto', sans-serif;
+	
+}
+ 
+P{
+	margin-top:10px;
+	font-family:'Roboto', sans-serif;	
+	margin-bottom:100px;
+}
+
+.btn-rp{
+	position: relative;
+	left: 55%;
+	display: block;
+	min-width: 88px;
+	padding: 12px 20px;
+	height: 3em;
+	margin: 2em;
+	border: none;
+	outline: none;
+	letter-spacing: 0;
+	font-family:'Roboto', sans-serif;
+	font-weight: bold;
+	font-style:italic;
+	font-size:12pt;
+	color:#FFF;
+	background-color:#f64141;
+	cursor: pointer;
+	overflow: hidden;
+	border-radius: 3px;
+	
+	-webkit-user-select: none; /*Remove seleção*/
+	-moz-user-select:none;
+	-ms-user-select:none;
+	-user-select:none;
+	
+	transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.12), 0 1px 2px 0 rgba(0,0,0,0.24);
+	-moz-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.12), 0 1px 2px 0 rgba(0,0,0,0.24);
+	box-shadow: 0 1px 3px 0 rgba(0,0,0,0.12), 0 1px 2px 0 rgba(0,0,0,0.24);
+}
+
+.btn-rp:hover{
+	background: #FF3821;
+	border-color: #FF3821;
+}
+
+.btn-rp:focus, .btn-rp:active{
+	-webkit-box-shadow: 0 3px 6px 0 rgba(0,0,0,0.15), 0 3px 6px 0 rgba(0,0,0,0.23);
+	-moz-box-shadow: 0 3px 6px 0 rgba(0,0,0,0.15), 0 3px 6px 0 rgba(0,0,0,0.23);
+	box-shadow: 0 3px 6px 0 rgba(0,0,0,0.15), 0 3px 6px 0 rgba(0,0,0,0.23);
+	background: #FC0000;
+}
+
+.ripple{
+	position: absolute;
+	background: rgba(0,0,0,.25);
+	border-radius: 100%;
+	pointer-events: none;
+	-webkit-transform: scale(0);
+	-ms-transform: scale(0);
+	transform: scale(0);
+}
+
+.ripple.show{
+	-webkit-animation: ripple .45s ease-out;
+	animation: ripple .45s ease-out;
+	
+}
+
+@-webkit-keyframes ripple{
+	to{
+		-webkit-transform: scale(1.5);
+		transform: scale(1.5);
+		opacity: 0;
+	}
+}
+
+@keyframes ripple{
+	to{
+		-webkit-transform: scale(1.5);
+		transform: scale(1.5);
+		opacity: 0;
+	}
+}
+
+
+
+/*Estilização do Efeito google de ser*/
+.caixa span{
+	position: absolute;
+	width: 0px;
+	height: 0px;
+	margin-left: 50%;
+	margin-top: -3px;
+	background: #bcbcbc;
+	z-index: 1000;
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	-o-transition: all .5s;
+	-ms-transition: all .5s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

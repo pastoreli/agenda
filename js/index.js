@@ -55,7 +55,7 @@
     }
 
     this.title.innerHTML = this.current.format('MMMM');
-    title_year.innerHTML = this.current.format('YYYY')
+    title_year.innerHTML = this.current.format('YYYY');
 
 
     
@@ -196,6 +196,7 @@
 
     //Outer Day
     var outer = createElement('div', this.getDayClass(day));
+
     outer.addEventListener('click', function() {
       self.openDay(this);
     });
@@ -334,6 +335,29 @@
     var wrapper = createElement('div', 'events in' + (currentWrapper ? ' new' : ''));
 
     events.forEach(function(ev) {
+
+      var feriado = feriado();
+
+      // feriado.forEach(function(evF)){
+
+
+
+      //     var div = createElement('div', 'event');
+      //     var event_bar = createElement('div', 'event_bar');
+      //     var hour_event = createElement('p', 'hour_event');
+      //     var square = createElement('div', 'event-category ' + evF.color);
+      //     var span = createElement('span', '', evF.eventName);
+
+      //     hour_event.innerHTML = evF.hour;
+
+      //     event_bar.appendChild(hour_event);
+      //     event_bar.appendChild(square);
+      //     event_bar.appendChild(span);
+      //     div.appendChild(event_bar)
+      //     wrapper.appendChild(div);
+
+      // });
+
       var div = createElement('div', 'event');
       var event_bar = createElement('div', 'event_bar');
       var hour_event = createElement('p', 'hour_event');
@@ -383,7 +407,7 @@
   Calendar.prototype.drawLegend = function() {
     var legend = createElement('div', 'legend');
     var calendars = this.events.map(function(e) {
-      return e.calendar + '|' + e.color;
+      return e.category + '|' + e.color;
     }).reduce(function(memo, e) {
       if(memo.indexOf(e) === -1) {
         memo.push(e);
@@ -425,25 +449,25 @@
 
 !function() {
   var data = [
-    { hour: '11:30', eventName: 'Pintar unha da Helo', calendar: 'Pé e Mão', color: 'orange' },
-    { hour: '11:30', eventName: 'Fazer unha do José', calendar: 'Pé e Mão', color: 'orange' },
-    { hour: '11:30', eventName: 'Cortar unha do gato da Sara', calendar: 'Pé e Mão', color: 'orange' },
-    { hour: '11:30', eventName: 'Pintar de roxo unha da Luana', calendar: 'Pé e Mão', color: 'orange' },
+    { hour: '15:30', eventName: 'Pintar unha da Helo', category: 'Pé e Mão', color: 'red' },
+    { hour: '18:50', eventName: 'Fazer unha do José', category: 'Pé e Mão', color: 'red' },
+    { hour: '20:40', eventName: 'Cortar unha do gato da Sara', category: 'Pé e Mão', color: 'red' },
+    { hour: '11:30', eventName: 'Pintar de roxo unha da Luana', category: 'Pé e Mão', color: 'red' },
 
-    { hour: '11:30', eventName: 'Progressiva da Rute', calendar: 'Cabelo', color: 'blue' },
-    { hour: '11:30', eventName: 'Corte da Karol', calendar: 'Cabelo', color: 'blue' },
-    { hour: '11:30', eventName: 'Pintar cabelo da Lorem', calendar: 'Cabelo', color: 'blue' },
-    { hour: '11:30', eventName: 'Tosar João Nechine', calendar: 'Cabelo', color: 'blue' },
+    { hour: '11:00', eventName: 'Progressiva da Rute', category: 'Cabelo', color: 'blue' },
+    { hour: '21:30', eventName: 'Corte da Karol', category: 'Cabelo', color: 'blue' },
+    { hour: '10:10', eventName: 'Pintar cabelo da Lorem', category: 'Cabelo', color: 'blue' },
+    { hour: '03:20', eventName: 'Tosar João Nechine', category: 'Cabelo', color: 'blue' },
 
-    { hour: '11:30', eventName: 'Depilar Rose', calendar: 'Depilação', color: 'yellow' },
-    { hour: '11:30', eventName: 'Depilar Renata', calendar: 'Depilação', color: 'yellow' },
-    { hour: '11:30', eventName: 'Depilar Maria', calendar: 'Depilação', color: 'yellow' },
-    { hour: '11:30', eventName: 'Depilar Sonia', calendar: 'Depilação', color: 'yellow' },
+    { hour: '16:40', eventName: 'Depilar Rose', category: 'Depilação', color: 'green' },
+    { hour: '18:20', eventName: 'Depilar Renata', category: 'Depilação', color: 'green' },
+    { hour: '16:30', eventName: 'Depilar Maria', category: 'Depilação', color: 'green' },
+    { hour: '15:50', eventName: 'Depilar Sonia', category: 'Depilação', color: 'green' },
 
-    { hour: '11:30', eventName: 'Maquiagem da Andreia', calendar: 'Maquiagem', color: 'green' },
-    { hour: '11:30', eventName: 'Maquiagem da João', calendar: 'Maquiagem', color: 'green' },
-    { hour: '11:30', eventName: 'Maquiagem da Luana', calendar: 'Maquiagem', color: 'green' },
-    { hour: '11:30', eventName: 'Maquiagem da Julia', calendar: 'Maquiagem', color: 'green' }
+    { hour: '23:30', eventName: 'Maquiagem da Andreia', category: 'Maquiagem', color: 'purple' },
+    { hour: '09:30', eventName: 'Maquiagem da João', category: 'Maquiagem', color: 'purple' },
+    { hour: '08:30', eventName: 'Maquiagem da Luana', category: 'Maquiagem', color: 'purple' },
+    { hour: '07:30', eventName: 'Maquiagem da Julia', category: 'Maquiagem', color: 'purple' },
   ];
 
   
@@ -455,3 +479,71 @@
   var calendar = new Calendar('#calendar', data);
 
 }();
+
+function feriado(){
+
+  var feriado = [
+
+      //janeiro
+      { hour: '00:00', dia: 1, mes: 1, eventName: 'Ano novo', category: 'Feriado', color: 'gray'},
+      { hour: '00:00', dia: 20, mes: 1, eventName: 'Dia de São Sebastião', category: 'Feriado', color: 'gray'},
+      { hour: '00:00', dia: 25, mes: 1, eventName: 'Aniversário de São Paulo', category: 'Feriado', color: 'gray'},
+
+      //Fevereiro
+      { hour: '00:00', dia: 19, mes: 2, eventName: 'Término do Horário de Verão', category: 'Feriado', color: 'gray'},
+      { hour: '00:00', dia: 28, mes: 2, eventName: 'Carnaval', category: 'Feriado', color: 'gray'},
+
+      //Março
+      { hour: '00:00', dia: 1, mes: 3, eventName: 'Aniversário do Rio de Janeiro', category: 'Feriado', color: 'gray'},
+      { hour: '00:00', dia: 8, mes: 3, eventName: 'Dia Internacional da Mulher', category: 'Feriado', color: 'gray'},
+      { hour: '00:00', dia: 12, mes: 3, eventName: 'Aniversário de Recife', category: 'Feriado', color: 'gray'},
+
+      //Abril
+      { hour: '00:00', dia: 14, mes: 4, eventName: 'Sexta-feira da Paixão', category: 'Feriado', color: 'gray'},
+      { hour: '00:00', dia: 15, mes: 4, eventName: 'Sábado de Aleluia', category: 'Feriado', color: 'gray'},
+      { hour: '00:00', dia: 21, mes: 4, eventName: 'Tiradentes', category: 'Feriado', color: 'gray'},
+      { hour: '00:00', dia: 21, mes: 4, eventName: 'Aniversário de Brasília', category: 'Feriado', color: 'gray'},
+      { hour: '00:00', dia: 22, mes: 4, eventName: 'Descobrimento do Brasil', category: 'Feriado', color: 'gray'},
+
+      //Maio
+      { hour: '00:00', dia: 1, mes: 5, eventName: 'Dia do Trabalhador', category: 'Feriado', color: 'gray'},
+
+      //Junho
+      { hour: '00:00', dia: 12, mes: 6, eventName: 'Dia dos Namorados', category: 'Feriado', color: 'gray'},
+      { hour: '00:00', dia: 15, mes: 6, eventName: 'Corpus Christi', category: 'Feriado', color: 'gray'},
+      { hour: '00:00', dia: 24, mes: 6, eventName: 'Dia de São João', category: 'Feriado', color: 'gray'},
+
+      //Julho
+      { hour: '00:00', dia: 9, mes: 7, eventName: 'Revolução Constitucionalista', category: 'Feriado', color: 'gray'},
+      { hour: '00:00', dia: 20, mes: 7, eventName: 'Dia do Amigo e Internacional da Amizade', category: 'Feriado', color: 'gray'},   
+
+      //Agosto
+      { hour: '00:00', dia: 6, mes: 8, eventName: 'Dia de São Salvador do Mundo', category: 'Feriado', color: 'gray'},
+      { hour: '00:00', dia: 15, mes: 8, eventName: 'Dia da Assunção de Nossa Senhora', category: 'Feriado', color: 'gray'},         
+
+      //Setembro
+      { hour: '00:00', dia: 7, mes: 9, eventName: 'Independência do Brasil', category: 'Feriado', color: 'gray'},
+
+      //Outubro
+      { hour: '00:00', dia: 12, mes: 10, eventName: 'Dia das Crianças', category: 'Feriado', color: 'gray'},
+      { hour: '00:00', dia: 12, mes: 10, eventName: 'Nossa Senhora Aparecida', category: 'Feriado', color: 'gray'},      
+      { hour: '00:00', dia: 15, mes: 10, eventName: 'Dia do Professor', category: 'Feriado', color: 'gray'},
+      { hour: '00:00', dia: 15, mes: 10, eventName: 'Horário de Verão', category: 'Feriado', color: 'gray'},
+
+      //Novembro
+      { hour: '00:00', dia: 2, mes: 11, eventName: 'Finados', category: 'Feriado', color: 'gray'},
+      { hour: '00:00', dia: 15, mes: 11, eventName: 'Proclamação da República', category: 'Feriado', color: 'gray'},      
+      { hour: '00:00', dia: 20, mes: 11, eventName: 'Dia Nacional da Consciência Negra', category: 'Feriado', color: 'gray'},
+
+      //Novembro
+      { hour: '00:00', dia: 25, mes: 12, eventName: 'Finados', category: 'Feriado', color: 'gray'},
+
+      //pascoa
+      //dia das mães
+      //dia dos pais
+
+  ];
+
+  return feriado;
+
+}
