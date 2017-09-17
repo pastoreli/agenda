@@ -11,16 +11,33 @@
 
 </head>
 
-<body>
-  
-  	<div id="calendar">
-  		
-  	</div>
+	<body>
+	  
+		<div id="conteudo">
 
-  	<script src="js/jquery-3.1.1.min.js"></script>
+		  	<div id="calendar">
+		  		
+		  	</div>
+
+		  	<div id="eventos">
+		  			
+		  		<div id="cabecalho_evento">
+		  			<h1>27</h1>
+		  			<button>Adicionar</button>
+		  		</div>
+
+		  		<div id="itens_evento">
+		  			
+		  		</div>
+
+		  	</div>
+
+		 </div>
+
+	</body>
+
+	<script src="js/jquery-3.1.1.min.js"></script>
 	<script src="js/moment.js"></script>
-  
-    <script src="js/index.js"></script>
-
-</body>
+	<script src="js/index.js"></script>
+	
 </html>
