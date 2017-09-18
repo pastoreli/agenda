@@ -7,9 +7,11 @@
       <link rel="stylesheet" href="css/loginStyle.css">
   
 </head>
-<body>
-  
-    <div class="conteudo">
+
+
+<body ondragstart='return false'>
+   <div class="wallpaper-moviment">
+     <div class="conteudo">
     	<img class="imagem" src="img/googleImg.png"/>
         <h3>Login</h3>
         <p>Use sua conta do Google</p>
@@ -29,10 +31,11 @@
         <div class="botao">
         	<button class="btn-rp" type="button" id="logar">Logar</button>
         </div>
-	
 
     </div>
+   </div>
 <script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/jquery.backgroundMove.js"></script>
 <script src="js/login.js"></script>
 
 

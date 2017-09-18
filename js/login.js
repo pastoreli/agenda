@@ -7,7 +7,7 @@ $(".caixa").click(function(){
 
 $(".txt").focus(function(){
 	//$(this).parent().css("background", "#000");
-	$(this).parent().find("label").css("margin-top", "-40px");
+	$(this).parent().find("label").css("margin-top", "-10px");
 	$(this).parent().find("label").css("font-size", "10px");
 	$(this).parent().find("label").css("color", "#f64141");
 	$(this).parent().css("border-color", "#f64141");
@@ -24,19 +24,32 @@ $(".txt").focus(function(){
 $(".txt").blur(function(){
 	/*Verifica se as caixas de textos estão vazias*/
 	if($(this).val().length <= 0){
-		$(this).parent().find("label").css("margin-top", "0px");
-		$(this).parent().find("label").css("font-size", "14px");
-		$(this).parent().css("border-color", "#e0e0e0");
+		$(this).parent().find("label").css("font-size", "18px");
+		$(this).parent().css("border-color", "#A3A3A3");
 		$(this).parent().find("label").css("color", "#757575");	
-	
+		$(this).parent().find("label").css("height", "60%");
+		$(this).parent().find("label").css("margin-top", "9%");
 		/*Retira o efeito google de ser*/
 
 		$(this).parent().find("span").css("margin-left", "50%");
 		$(this).parent().find("span").css("width","0px");
 		$(this).parent().find("span").css("height", "0px");
 		$(this).parent().find("span").css("background", "#bcbcbc");
+		
 	}
 });
+
+
+/*Deixa as text branca quando escreve - depois do erro de login*/
+
+$(".caixa").keyup(function(){
+	
+	$(this).css("background", "transparent");
+});
+
+
+
+
 
 //Criação do efeito Ripple;
 
@@ -71,10 +84,8 @@ document.addEventListener('click', btnsRipple, false);
 $('#logar').click(function(){
 
 	if(validacao()){
-		alert('Login efetuado com sucesso!');
-	}else{
-		
-	}
+		console.log('Login efetuado com sucesso!');
+	
 	
         $.ajax({
             url: 'php/configurar_login.php',
@@ -87,19 +98,22 @@ $('#logar').click(function(){
             },
              success: function (retorno) {
  				if(retorno.sucesso){
-					alert('Usuário encontrado / Logado');
+					
+					conso.log('Usuário encontrado / Logado');
 				}else{
-					alert('Erro ao logar, usuário e/ou senha inválido');
+					console.log('Erro ao logar, usuário e/ou senha inválido');
 				}
             
         },
         error: function () {
  
-            alert("some problem in saving data");
+            console.log("Erro ao logar");
         }
         })
 
-
+	}else{
+		
+	}
 });
 
 
@@ -111,12 +125,12 @@ function validacao(){
     if(expemail.exec($(".email").val()))
         v_email = true;
     else{
-        $(".email").css("background", "#ffc1d1");
+        $(".txt.email").parent().css("background", "#ffc1d1");
         v_email = false;
     }
 	
-	if($(".senha").val().length <= 0){
-		$(".senha").css("background", "#ffc1d1");
+	if($(".txt.senha").val().length < 6){
+		$(".txt.senha").parent().css("background", "#ffc1d1");
 		v_senha = false;		
 	}else{
 		v_senha = true;
@@ -129,10 +143,35 @@ function validacao(){
 	}
 }
 
+// Código para bloquear o arrastamento de imagens e bloquear seleções
+/*window.oncontextmenu = function() {
+            return false;
+        };
+       
+        window.onselectstart = function() {
+            return false;
+        };
+        window.onmousedown = function() {
+            return false;
+        };*/
 
 
+// Código para bloquear o botão direito do mouse
+$(document).bind('mousedown', function(e){
+   if(e.which == 2 || e.which == 3 || e.which == 123){
+   $(document).bind("contextmenu",function(e){
+   return false;
+});
+return false;
+}
+});
 
 
+//Papel de parede se mexendo;
+
+$('.wallpaper-moviment').backgroundMove({
+	movementStrength: '50'
+})
 
 
 
