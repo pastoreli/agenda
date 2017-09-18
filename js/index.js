@@ -1,3 +1,5 @@
+ var event_day;
+
 !function() {
 
   var today = moment();
@@ -220,11 +222,11 @@
     outer.appendChild(events);
     this.week.appendChild(outer);
 
-    var event_day = getEventos(day.format('DD'), mes_diferente, ano);
+    var event_array = getEventos(day.format('DD'), mes_diferente, ano);
   
-    if(event_day.length > 0){
+    if(event_array.length > 0){
       
-        event_day.forEach(function(e){
+        event_array.forEach(function(e){
 
           var categoria = getCategoria(e.categoria);
 
@@ -235,29 +237,7 @@
 
     }
 
-    // alert(event_day);
-
-    // console.log($(".day.23").html());
-
-    // var
-
   }
-
-  // Calendar.prototype.drawEvents = function(day, element) {
-  //   if(day.month() === this.current.month()) {
-  //     var todaysEvents = this.events.reduce(function(memo, ev) {
-  //       if(ev.date.isSame(day, 'day')) {
-  //         memo.push(ev);
-  //       }
-  //       return memo;
-  //     }, []);
-
-  //     todaysEvents.forEach(function(ev) {
-  //       var evSpan = createElement('span', ev.color);
-  //       element.appendChild(evSpan);
-  //     });
-  //   }
-  // }
 
   Calendar.prototype.getDayClass = function(day) {
     classes = ['day'];
@@ -274,14 +254,12 @@
   var click_equal = null;
 
   Calendar.prototype.openDay = function(el, day_clicked) {
-    
+
     if(click_equal != el){
 
       click_equal = el;
 
       $("#itens_evento").html("");
-
-      var event_day
 
       if($(el).find(".day-number").css("color") == "rgb(195, 195, 195)"){
 
@@ -308,6 +286,9 @@
               var categoria = getCategoria(e.categoria);
 
               var barra_evento = createElement('div', 'barra_evento');
+              barra_evento.addEventListener('click', function() {
+                openEvento(this);
+              });
               var hour_evento = createElement('p', 'hour_event', e.hour);
               var square = createElement('div', 'event-category ' + categoria.color);
               var descricao_evento = createElement('p', 'descricao_evento', e.descricao);
@@ -318,6 +299,14 @@
               $("#itens_evento").append(barra_evento);
 
           });
+
+        }else{
+
+          var sem_evento = createElement('div', 'sem_evento');
+          var desc_sem_evento = createElement('p', '', 'Não há eventos');
+
+          sem_evento.appendChild(desc_sem_evento);
+          $("#itens_evento").append(sem_evento);
 
         }
 
@@ -506,3 +495,28 @@ function getCategoria(index){
      criarEventos(); 
    var calendar = new Calendar();
 }();
+
+function openEvento(objeto){
+
+  $("#cabecalho_info h1").html(event_day[$(objeto).index()].descricao);
+  $("#camada_evento").show();
+
+  setTimeout(function(){
+    $("#conteudo").toggleClass("blur");
+    $("#camada_evento").css("opacity", "1");
+    $("#evento_info").css("bottom", "0px");
+  }, 100);  
+
+}
+
+$("#camada_evento").click(function(){
+
+  $("#conteudo").toggleClass("blur");
+  $("#camada_evento").css("opacity", "0");
+  $("#evento_info").css("bottom", "-100%");
+
+  setTimeout(function(){
+     $("#camada_evento").hide();
+  }, 100); 
+
+});

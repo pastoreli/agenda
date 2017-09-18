@@ -13,6 +13,8 @@
 
 	<body>
 	  
+		<div id="fundo"></div>
+
 		<div id="conteudo">
 
 		  	<div id="calendar">
@@ -33,6 +35,20 @@
 		  	</div>
 
 		 </div>
+
+		 <div id="camada_evento">
+
+			 <div id="evento_info">
+			 	
+			 	<div id="cabecalho_info">
+			 		
+			 		<h1>jhjh</h1>
+
+			 	</div>
+
+			 </div>
+
+		</div>
 
 	</body>
 

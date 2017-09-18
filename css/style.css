@@ -250,9 +250,31 @@ body {
     height: 100%;
   }
 
+  #conteudo.blur{
+     filter: blur(10px);
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+  }
+
+  #fundo{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../img/fundo.jpg) no-repeat;
+    background-size: 100%;
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+  }
+
   #calendar {
     width: 100%;
     height: 100%;
+    background: rgba(255,255,255,.85);
     overflow: hidden;
     -moz-transition: all 600ms;
     -webkit-transition: all 600ms;
@@ -263,7 +285,7 @@ body {
     height: 65px;
     width: calc(100% - 40px);
     margin-left: 20px;
-    background: rgba(255, 255, 255, .90);
+    /*background: rgba(255, 255, 255, .90);*/
     text-align: center;
     position:relative;
     border-bottom: 1px solid #c0c0c0;
@@ -482,7 +504,7 @@ body {
     position: absolute;
     width: 100%;
     height: 40%;
-    background: transparent;
+    background: rgba(255,255,255,.7);
     overflow: auto;
     border-top: 1px solid #c0c0c0;
     -moz-transition: all 600ms;
@@ -602,6 +624,65 @@ body {
 
   .event-category.gray{
     background: #b4b4b4;
+  }
+
+  .sem_evento{
+    width: 100%;
+    height: 50px;
+    margin-top: 50px;
+  }
+
+  .sem_evento p{
+    font-family: "Arial";
+    font-size: 30px;
+    font-weight: 400;
+    color: #aaaaaa;
+    text-align: center;
+  }
+
+  #camada_evento{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.3);
+    z-index: 200;
+    opacity: 0;
+    display: none;
+    -moz-transition: all 600ms;
+    -webkit-transition: all 600ms;
+    transition: all 600ms;
+  }
+
+  #evento_info{
+    position: absolute;
+    width: calc(100% - 20px);
+    height: 400px;
+    background: rgba(255,255,255,.8);
+    bottom: -100%;
+    margin-left: 10px;
+    -moz-border-radius: 10px 10px 0px 0px;
+    -webkit-border-radius: 10px 10px 0px 0px;
+    -moz-transition: all 600ms;
+    -webkit-transition: all 600ms;
+    transition: all 600ms;
+  }
+
+  #cabecalho_info{
+    width: 96%;
+    height: 50px;
+    margin: auto;
+  }
+
+  #cabecalho_info h1{
+    display: block;
+    width: 70%;
+    height: 30px;
+    overflow: hidden;
+    font-family: "Arial";
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    text-align: left;
   }
 
 }
